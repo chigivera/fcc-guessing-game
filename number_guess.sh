@@ -1,5 +1,5 @@
 #!/bin/bash
-PSQL="psql --username=freecodecamp --dbname=guessing_game -t --no-align -c"
+PSQL="psql --username=freecodecamp --dbname=postgres -t --no-align -c"
 
 echo "Enter your username:"
 read USERNAME
@@ -15,7 +15,7 @@ then
 else
   GAMES_PLAYED=$($PSQL "select games_played from users where user_id = $USER_ID")
   BEST_GAME=$($PSQL "select best_game from users where user_id = $USER_ID")
-  echo "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
+  echo -e "Welcome back, $USERNAME! You have played $GAMES_PLAYED games, and your best game took $BEST_GAME guesses."
 fi
 
 echo "Guess the secret number between 1 and 1000:"
